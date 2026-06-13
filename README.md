@@ -18,6 +18,7 @@ highlight-selection.priority:          100             // default": 100
 highlight-selection.caseSensitive:     true            // default": true
 highlight-selection.wholeWordMatching: true            // default": true
 highlight-selection.wordSeparators:    ""              // default": ""
+highlight-selection.highlightSelf:     true            // default: true
 ```
 
 **Enjoy!**

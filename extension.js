@@ -23,6 +23,10 @@ function getWholeWordMatchingValue(config) {
 	return config.get('wholeWordMatching') || false;
 }
 
+function getHighlightSelfValue(config) {
+	return config.get('highlightSelf') !== false;
+}
+
 function getWordSeparatorsValue(config) {
 	let wordSeparators = config.get('wordSeparators');
 	if (wordSeparators) return wordSeparators;
@@ -57,6 +61,7 @@ function activate(context) {
   const priority = getPriorityValue(config);
   const caseSensitive = getCaseSensitiveValue(config);
   const wholeWordMatching = getWholeWordMatchingValue(config);
+  const highlightSelf = getHighlightSelfValue(config);
   const wordSeparators = getWordSeparatorsValue(config);
 	const borderWidth = getBorderWidth(config);
 	const borderRadius = getBorderRadius(config);
@@ -83,6 +88,7 @@ function activate(context) {
 	window.onDidChangeTextEditorSelection(() => {
 		const editor = window.activeTextEditor;
 		const ranges = [];
+		let totalCount = 0;
 
 		if (editor) {
 			let text = editor.document.getText(editor.selection);
@@ -101,11 +107,19 @@ function activate(context) {
 					const startPos = editor.document.positionAt(match.index);
 					const endPos = editor.document.positionAt(match.index + match[0].length);
 
+					totalCount++;
+
+					if (!highlightSelf
+						&& startPos.isEqual(editor.selection.start)
+						&& endPos.isEqual(editor.selection.end)) {
+						continue;
+					}
+
 					ranges.push({ range: new Range(startPos, endPos) });
 				}
 
-				if (ranges.length) {
-					msg.text = '高亮选中: ' + ranges.length;
+				if (totalCount) {
+					msg.text = '高亮选中: ' + totalCount;
 					msg.show();
 				} else if (msg) {
 					msg.hide();

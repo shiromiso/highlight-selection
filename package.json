@@ -71,6 +71,11 @@
           "type": "string",
           "default": "",
           "description": "Custom word separators for whole word matching. If not specified, the value of \"editor.wordSeparators\" will be used."
+        },
+        "highlight-selection.highlightSelf": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlights the selected text itself along with its other occurrences. When disabled, only the other occurrences are highlighted."
         }
       }
     }
