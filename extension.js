@@ -51,6 +51,10 @@ function getBackgroundColor(config) {
 	return config.get('backgroundColor');
 }
 
+function getColor(config) {
+	return config.get('color');
+}
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -67,6 +71,7 @@ function activate(context) {
 	const borderRadius = getBorderRadius(config);
 	const borderColor = getBorderColor(config);
 	const backgroundColor = getBackgroundColor(config);
+	const color = getColor(config);
 
 	const msg = window.createStatusBarItem(alignment, priority);
 	const decorationType = window.createTextEditorDecorationType({
@@ -75,7 +80,7 @@ function activate(context) {
 		borderRadius,
 		borderColor,
 		backgroundColor,
-		color: 'black',
+		color,
 	});
 
 	let matchFlags = 'gi';

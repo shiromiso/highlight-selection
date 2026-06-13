@@ -13,6 +13,7 @@ highlight-selection.borderWidth:       "1px"           // default: "1px"
 highlight-selection.borderRadius:      "3px"           // default: "3px"
 highlight-selection.borderColor:       ""              // default: ""
 highlight-selection.backgroundColor:   "yellow"        // default: "yellow"
+highlight-selection.color:             "black"         // default: "black"
 highlight-selection.alignment:         "left or right" // default: "left"
 highlight-selection.priority:          100             // default": 100
 highlight-selection.caseSensitive:     true            // default": true

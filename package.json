@@ -43,6 +43,11 @@
           "default": "yellow",
           "description": "Set backgroundColor"
         },
+        "highlight-selection.color": {
+          "type": "string",
+          "default": "black",
+          "description": "Set the text color of the highlighted text."
+        },
         "highlight-selection.alignment": {
           "type": "string",
           "enum": [
