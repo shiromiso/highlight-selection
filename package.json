@@ -48,6 +48,11 @@
           "default": "black",
           "description": "Set the text color of the highlighted text."
         },
+        "highlight-selection.prefixText": {
+          "type": "string",
+          "default": "高亮选中: ",
+          "description": "Set the prefix text shown in the status bar before the count of occurrences."
+        },
         "highlight-selection.alignment": {
           "type": "string",
           "enum": [

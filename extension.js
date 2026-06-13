@@ -55,6 +55,10 @@ function getColor(config) {
 	return config.get('color');
 }
 
+function getPrefixText(config) {
+	return config.get('prefixText');
+}
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -72,6 +76,7 @@ function activate(context) {
 	const borderColor = getBorderColor(config);
 	const backgroundColor = getBackgroundColor(config);
 	const color = getColor(config);
+	const prefixText = getPrefixText(config);
 
 	const msg = window.createStatusBarItem(alignment, priority);
 	const decorationType = window.createTextEditorDecorationType({
@@ -124,7 +129,7 @@ function activate(context) {
 				}
 
 				if (totalCount) {
-					msg.text = '高亮选中: ' + totalCount;
+					msg.text = prefixText + totalCount;
 					msg.show();
 				} else if (msg) {
 					msg.hide();
